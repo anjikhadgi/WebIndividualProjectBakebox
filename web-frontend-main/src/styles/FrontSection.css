@@ -1,0 +1,28 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Ethereal", "Baskerville Old Face", "Baskerville", serif;
+}
+
+.front-image{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-image: url('../assets/images/front-image.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.front-image h1{
+    color: white;
+    margin: 0px 0px 30px;
+    line-height: 75px;
+    font-size: 60px;
+    font-weight: 300;
+}

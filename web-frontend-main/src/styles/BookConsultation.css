@@ -1,0 +1,122 @@
+/* CSS Styling */
+.bookWrapper {
+    position: relative;
+    height: 120vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.book-header {
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 2rem;
+}
+
+.book-header h2 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.bookContent {
+    height: auto;
+    width: 35%;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-left: auto;
+    margin-top: 5%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: white;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group textarea {
+    resize: none;
+    height: 100px;
+}
+
+.consultBtn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #B19F6F;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.consultBtn:hover {
+    background-color: #8A7C56;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+@media screen and (max-width: 768px) {
+    .bookWrapper {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .book-header {
+        position: static;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .bookContent {
+        width: 80%;
+        margin-top: 20px;
+    }
+}

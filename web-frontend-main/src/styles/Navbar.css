@@ -1,0 +1,154 @@
+/* Navbar */
+.navbar {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-between;
+    position: relative;
+    background-color: #B19F6F;
+    top: 0;
+    padding: 0 30px;
+}
+
+/* Logo */
+.logo img {
+    height: 7rem;
+    width: 8rem;
+    margin-top: 5px;
+}
+
+/* Navigation elements */
+.navelement {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 16px;
+}
+
+/* Styled buttons for Home & Book */
+.navelement .home a,
+.navelement .book a {
+    padding: 6px 12px; /* Slightly smaller */
+    border-radius: 5px;
+    border: 2px solid #fff;
+    background-color: white; 
+    color: #B19F6F; 
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+}
+
+/* Hover effect */
+.navelement .home a:hover,
+.navelement .book a:hover {
+    background-color: #8C7C4C;
+    color: white;
+    border-color: white;
+}
+
+/* Profile Section */
+.profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 2rem; /* Increased icon size */
+    color: white;
+    margin-right: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+.profile:hover {
+    color: #8C7C4C;
+}
+
+/* Dropdown menu */
+.drop-down {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 100px;
+}
+
+/* Show dropdown on hover */
+.profile:hover .drop-down {
+    display: block;
+}
+
+/* Dropdown items */
+.drop-down a,
+.drop-down button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+.drop-down a:hover,
+.drop-down button:hover {
+    background-color: #f0f0f0;
+    color: #B19F6F;
+}
+
+/* Logout button */
+.logout-btn {
+    color: #ff4d4d;
+}
+
+.logout-btn:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+/* Authentication buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-btn {
+    color: #B19F6F;
+    border: 2px solid white;
+    background: white;
+}
+
+.login-btn:hover {
+    background-color: #8C7C4C;
+    color: white;
+}
+
+.signup-btn {
+    color: #B19F6F;
+    border: 2px solid white;
+    background: white;
+}
+
+.signup-btn:hover {
+    background-color: #8C7C4C;
+    color: white;
+}

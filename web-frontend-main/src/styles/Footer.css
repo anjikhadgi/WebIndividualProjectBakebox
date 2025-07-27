@@ -1,0 +1,73 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Ethereal", "Baskerville Old Face", "Baskerville", serif;
+}
+
+footer{
+    margin-top: 10px;
+}
+
+.footer1{
+    background-color: #3d3a37;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer1 a {
+    color: #f8f8f8;
+    text-decoration: none;
+}
+
+.footer2{
+    height: 40vh;
+    background-color: #111111;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-evenly;
+    
+}
+
+.footer2 p{
+    color: white;
+}
+
+.footer2 ul a{
+    color: white;
+    text-decoration: none;
+}
+
+.footer2 ul p{
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.footer2 a{
+    display: block; /*all comes in a single line*/
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.footer2 a:hover{
+    cursor: pointer;
+    color: #DBDBDB;
+}
+
+.footer3{
+    height: 5vh;
+    background-color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

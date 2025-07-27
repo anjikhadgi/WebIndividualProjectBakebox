@@ -1,0 +1,79 @@
+/* Styling for the admin booking page */
+.admin-bookings {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .admin-bookings h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .bookings-table th,
+  .bookings-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .bookings-table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .bookings-table td {
+    background-color: #fff;
+  }
+  
+  .bookings-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .bookings-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .delete-button {
+    color: black;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .delete-button:focus {
+    outline: none;
+  }
+  
+  .bookings-table td[colspan="8"] {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+  }
+
+  /* Styling for the Back to Dashboard button */
+  .back-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    float: right; /* Moves the button to the right */
+}
+  
+  .back-button:focus {
+    outline: none;
+  }
+  
