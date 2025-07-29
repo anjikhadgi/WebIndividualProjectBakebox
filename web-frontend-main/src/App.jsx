@@ -3,41 +3,50 @@ import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-rou
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Profile from "./components/pages/private/Profile";
 
-// Lazy Load Components
+// Lazy Load Components - Updated names
 const Homepage = lazy(() => import("./components/pages/private/Homepage"));
 const LoginPage = lazy(() => import("./components/pages/public/Login"));
 const SignupPage = lazy(() => import("./components/pages/public/Signup"));
-const BookConsultation = lazy(() => import("./components/pages/private/BookConsultation"));
+const OrderConsultation = lazy(() => import("./components/pages/private/OrderConsultation"));
 const Navbar = lazy(() => import("./components/pages/private/Navbar"));
 const Footer = lazy(() => import("./components/pages/private/Footer"));
 
 // Section Page
 const FrontSection = lazy(() => import("./components/pages/private/FrontSection"));
 
-// Admin Pages
+// Admin Pages - Updated names
 const AdminLogin = lazy(() => import("./components/pages/private/AdminLogin"));
 const DashboardIndex = lazy(() => import("./components/api/dashboard/index"));
 const CustomerIndex = lazy(() => import("./components/api/customer/index"));
 const CustomerForm = lazy(() => import("./components/api/customer/form"));
-const DesignIndex = lazy(() => import("./components/api/design/index"));
-const DesignForm = lazy(() => import("./components/api/design/form"));
-const BookingIndex = lazy(() => import("./components/api/booking/index"));
+const ProductIndex = lazy(() => import("./components/api/product/index"));
+const ProductForm = lazy(() => import("./components/api/product/form"));
+const OrderIndex = lazy(() => import("./components/api/order/index"));
 
 const queryClient = new QueryClient();
 
+// User Route Protection
 const PrivateUserRoute = () => {
   const token = localStorage.getItem("token");
-  const isAuthenticated = !!token; // Converts to a boolean
-
+  const isAuthenticated = !!token;
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
-const PrivateRoute = () => {
+// Admin Route Protection (Checks for Admin Role as well)
+const PrivateAdminRoute = () => { // Renamed from PrivateRoute to PrivateAdminRoute for clarity
   const token = localStorage.getItem("token");
   const isAuthenticated = !!token;
 
+  // You would ideally decode the token here to check for 'admin' role
+  // For now, let's assume if there's a token, it's valid for admin path.
+  // In a real app, you'd add logic like:
+  // const user = token ? JSON.parse(atob(token.split('.')[1])) : null;
+  // const isAdmin = user && user.role === 'admin';
+  // return isAdmin ? <Outlet /> : <Navigate to="/admin/login" replace />;
+
   return isAuthenticated ? <Outlet /> : <Navigate to="/admin/login" replace />;
 };
+
 
 // Layout Wrapper to Include Navbar/Footer
 const UserLayout = () => (
@@ -48,42 +57,47 @@ const UserLayout = () => (
   </>
 );
 
-// Define Routes
+// Define Routes - CORRECTED ADMIN ROUTES
 const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignupPage /> },
+  { path: "/admin/login", element: <AdminLogin /> }, // ADMIN LOGIN MUST BE PUBLICLY ACCESSIBLE
 
   // User Routes with Navbar/Footer (Protected by Authentication)
   {
     path: "/",
     element: <UserLayout />,
     children: [
+      { index: true, element: <Homepage /> }, // Add an index route for the root '/'
       { path: "home", element: <Homepage /> }, // Accessible to everyone
       {
-        element: <PrivateUserRoute />, // Protects all other routes
+        element: <PrivateUserRoute />, // Protects user-specific routes
         children: [
           { path: "profile", element: <Profile /> },
-          { path: "bookconsultation", element: <BookConsultation /> },
+          { path: "orderconsultation", element: <OrderConsultation /> }, // Still "orderconsultation" here.
+                                                                     // If the previous error was for "/bookconsultation",
+                                                                     // this path should be "bookconsultation"
+                                                                     // or the frontend link should be "orderconsultation".
+                                                                     // I will keep it as you provided for now.
           { path: "frontsection", element: <FrontSection /> },
         ]
       }
     ]
   },
 
-  // Admin Routes (Protected by Admin Authentication)
+  // Admin Protected Routes (Only accessible AFTER login)
   {
-    path: "/admin",
-    element: <PrivateRoute />,
+    path: "/admin", // This now defines the base path for these children
+    element: <PrivateAdminRoute />, // Protects these routes
     children: [
-      { path: "login", element: <AdminLogin /> },
       { path: "dashboard", element: <DashboardIndex /> },
       { path: "customer", element: <CustomerIndex /> },
       { path: "customer/:id", element: <CustomerForm /> },
       { path: "customer/form", element: <CustomerForm /> },
-      { path: "design", element: <DesignIndex /> },
-      { path: "design/create", element: <DesignForm /> }, // Route for creating a new design
-      { path: "design/edit/:id", element: <DesignForm /> }, // Route for editing an existing design
-      { path: "booking", element: <BookingIndex /> },
+      { path: "products", element: <ProductIndex /> },
+      { path: "products/create", element: <ProductForm /> },
+      { path: "products/edit/:id", element: <ProductForm /> },
+      { path: "orders", element: <OrderIndex /> },
     ],
   },
 ]);

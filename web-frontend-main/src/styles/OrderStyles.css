@@ -1,0 +1,78 @@
+/* Styling for the admin order page */
+.admin-orders { /* Renamed from .admin-bookings */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.admin-orders h2 { /* Renamed from .admin-bookings h2 */
+    text-align: center;
+    color: #333;
+}
+
+.orders-table { /* Renamed from .bookings-table */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.orders-table th, /* Renamed from .bookings-table th */
+.orders-table td { /* Renamed from .bookings-table td */
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.orders-table th { /* Renamed from .bookings-table th */
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.orders-table td { /* Renamed from .bookings-table td */
+    background-color: #fff;
+}
+
+.orders-table tr:nth-child(even) { /* Renamed from .bookings-table tr */
+    background-color: #f9f9f9;
+}
+
+.orders-table tr:hover { /* Renamed from .bookings-table tr */
+    background-color: #f1f1f1;
+}
+
+.delete-button {
+    color: black;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+.delete-button:focus {
+    outline: none;
+}
+
+.orders-table td[colspan="8"] { /* Renamed from .bookings-table td */
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Styling for the Back to Dashboard button */
+.back-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    float: right; /* Moves the button to the right */
+}
+
+.back-button:focus {
+    outline: none;
+}

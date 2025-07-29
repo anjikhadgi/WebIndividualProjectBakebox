@@ -1,41 +1,49 @@
-require("dotenv").config();
-const express = require("express");
-const {connection, sequelize } = require("./config/db");  
-const CustomerRouter = require("./routes/CustomerRoute"); 
-const DesignRouter = require("./routes/DesignRoute");     
-const BookingRouter = require("./routes/BookingRoute"); 
-const AuthRouter = require("./routes/AuthRoute"); 
+require("dotenv").config(); // Load environment variables from .env file
 
-const app = express();
+const express = require("express"); // Import the express package
+const cors = require('cors'); // Import the cors package
 
-const cors = require('cors');
+const { connection, sequelize } = require("./config/db"); // Import database connection and sequelize utilities
+const CustomerRouter = require("./routes/CustomerRoute");
+const ProductRouter = require("./routes/ProductRoute");
+const OrderRouter = require("./routes/OrderRoute");
+const AuthRouter = require("./routes/AuthRoute");
 
+const app = express(); // Initialize the express application
+
+const port = process.env.PORT || 5000; // Define the server port, defaults to 5000 if not set in .env
+
+// Configure CORS to allow requests from specific origins
 const corsOptions = {
-  credentials:true,
-  origin:['http://localhost:3000']
+  credentials: true, // Allow sending credentials (e.g., cookies, authorization headers)
+  origin: ['http://localhost:5000', 'http://localhost:3000'] // EXACT origins of your frontends
 };
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // Apply CORS middleware to the application
+
+// Parse JSON request bodies (important for POST/PUT requests)
+app.use(express.json());
+// Parse URL-encoded request bodies (if you also handle form data)
+app.use(express.urlencoded({ extended: true }));
 
 // Establish database connection
 connection();
 
-if (process.env.NODE_ENV === "development") { 
+// Sync database models with the database in development environment
+if (process.env.NODE_ENV === "development") {
   sequelize.sync({ alter: true })
     .then(() => console.log("Database synced!"))
     .catch(err => console.error("Sync error:", err));
 }
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));  // Add this for form data
-
+// Register API routes
 app.use("/api/customer", CustomerRouter);
-app.use("/api/design", DesignRouter);
-app.use("/design_images", express.static("design_images"));
-app.use("/api/booking", BookingRouter);
+app.use("/api/products", ProductRouter);
+// Serve static files (e.g., product images)
+app.use("/product_images", express.static("product_images"));
+app.use("/api/orders", OrderRouter);
 app.use("/api/auth", AuthRouter);
 
-const port = process.env.PORT || 8080;
+// Start the server and listen for incoming requests
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Backend server listening at http://localhost:${port}`);
 });
-

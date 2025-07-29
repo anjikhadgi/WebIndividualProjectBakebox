@@ -17,8 +17,8 @@ function Footer() {
                 <ul>
                     <p id="contactUs">Contact Us</p>
                     <a href="tel:+977981111111"><FaWhatsapp /> +977-981111111</a>
-                    <a href="mailto:interiorhomedesign@gmail.com"><FaEnvelope /> interiorhomedesign@gmail.com</a>
-                    <a href="#"><FaClock /> Sun-Fri / 9:00AM - 6:00PM</a>
+                    <a href="mailto:bakebox@gmail.com"><FaEnvelope /> bakebox@gmail.com</a>
+                    <a href="#"><FaClock /> Sun-Fri / 7:00AM - 9:00PM</a>
                     <a href="#"><FaLocationArrow /> Location: Kathmandu, Nepal</a>
                 </ul>
 
@@ -32,7 +32,7 @@ function Footer() {
             </div>
 
             <div className="footer3">
-                InteriorHomeDesign © 2025
+                Bakebox © 2025
             </div>
         </footer>
     );

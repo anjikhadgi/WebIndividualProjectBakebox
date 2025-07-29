@@ -36,7 +36,7 @@ function Navbar() {
 
       <div className="navelement">
         <div className="home"><Link to="/home">Home</Link></div>
-        <div className="book"><Link to ="/bookconsultation">Book</Link></div>
+        <div className="book"><Link to ="/orderconsultation">Order</Link></div>
 
         {/* Show profile options based on authentication */}
         {isAuthenticated ? (

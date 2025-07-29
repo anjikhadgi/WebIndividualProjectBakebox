@@ -15,7 +15,8 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/auth/login", credentials);
+      // Port updated from 8080 to 4000
+      const res = await axios.post("http://localhost:5000/api/auth/login", credentials);
       console.log("API Response:", res.data); // Debugging
       if (res.data.token) {
         localStorage.setItem("token", res.data.token); // Store token

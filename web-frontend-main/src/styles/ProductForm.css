@@ -1,0 +1,143 @@
+/* ProductForm.css */
+.product-form-container { /* Renamed class */
+  max-width: 800px; /* Increased width for better spacing */
+  margin: 40px auto; /* Added more margin for better centering */
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-form-container h1 { /* Renamed class */
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 25px;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.back-button:active {
+  transform: translateY(0); /* Reset on click */
+}
+
+.product-form { /* Renamed class */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #34495e;
+  font-size: 14px;
+}
+
+.form-input {
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Glow effect on focus */
+  outline: none;
+}
+
+/* Style for select dropdowns (Note: Quantity and Price are now number inputs) */
+/* This rule might become less relevant if all selects are replaced by number inputs */
+.form-input[type="select"] {
+  appearance: none; /* Remove default arrow */
+  background-color: white;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2334495e%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+/* File input styling */
+.form-input[type="file"] {
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 2px dashed #e0e0e0;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input[type="file"]:hover {
+  border-color: #007bff;
+  background-color: #e9f5ff;
+}
+
+/* Submit button styling */
+.submit-button {
+  padding: 14px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.submit-button:active {
+  transform: translateY(0); /* Reset on click */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .product-form-container { /* Renamed class */
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .product-form-container h1 { /* Renamed class */
+    font-size: 24px;
+  }
+
+  .form-input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .submit-button {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+}

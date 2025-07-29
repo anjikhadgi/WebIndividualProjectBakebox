@@ -30,7 +30,7 @@
   .admin-login-button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #5a341a;
     color: white;
     border: none;
     cursor: pointer;
@@ -39,7 +39,7 @@
   }
   
   .admin-login-button:hover {
-    background-color: #0056b3;
+    background-color: #5a341a;
   }
   
   .admin-login-error {
@@ -80,22 +80,22 @@
     background-color: #c82333;
   }
   
-  .admin-designs-title {
+  .admin-products-title {
     font-size: 20px;
     margin-bottom: 10px;
   }
   
-  .admin-designs-list {
+  .admin-products-list {
     list-style-type: none;
     padding: 0;
   }
   
-  .admin-design-item {
+  .admin-products-item {
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
   
-  .admin-design-item:last-child {
+  .admin-products-item:last-child {
     border-bottom: none;
   }
   

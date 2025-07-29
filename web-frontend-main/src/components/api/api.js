@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Define the base URL for your API
-const BASE_URL = 'http://localhost:8080/api/customer';
+const BASE_URL = 'http://localhost:5000/api/customer'; // Port updated to 4000
 
 // Function to handle login
 export const login = async (email, password) => {

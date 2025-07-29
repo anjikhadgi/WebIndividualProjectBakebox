@@ -12,7 +12,7 @@ footer{
 }
 
 .footer1{
-    background-color: #3d3a37;
+    background-color:#2d140f;
     height: 10vh;
     display: flex;
     align-items: center;
@@ -26,7 +26,7 @@ footer{
 
 .footer2{
     height: 40vh;
-    background-color: #111111;
+    background-color:#4a3d19;
     display: flex;
     gap: 30px;
     align-items: center;
@@ -65,7 +65,7 @@ footer{
 
 .footer3{
     height: 5vh;
-    background-color: #111111;
+    background-color: #341d1d;
     display: flex;
     justify-content: center;
     align-items: center;

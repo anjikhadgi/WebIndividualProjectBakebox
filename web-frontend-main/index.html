@@ -5,6 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <!-- Add this Content-Security-Policy meta tag -->
+    <meta http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: http://localhost:5000;
+        connect-src 'self' http://localhost:5000; /* <<-- ENSURE THIS LINE IS PRESENT AND CORRECT */
+        font-src 'self';
+        object-src 'none';
+        media-src 'self';
+        frame-src 'none';
+      ">
   </head>
   <body>
     <div id="root"></div>

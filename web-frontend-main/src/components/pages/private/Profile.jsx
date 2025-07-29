@@ -20,7 +20,7 @@ function Profile() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/customer/profile", {
+      const response = await fetch("http://localhost:5000/api/customer/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ function Profile() {
     }
 
     try {
-      const response = await axios.put(`http://localhost:8080/api/customer/${customer.id}`, customer, {
+      const response = await axios.put(`http://localhost:5000/api/customer/${customer.id}`, customer, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,

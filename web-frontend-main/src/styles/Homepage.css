@@ -1,56 +1,56 @@
 /* Homepage.css */
-.designs-section {
+.products-section { /* Renamed from .designs-section */
     margin-top: 40px;
     padding: 2rem;
     background-color: #f9f9f9;
-  }
-  
-  .designs-section h2 {
+}
+
+.products-section h2 { /* Renamed from .designs-section h2 */
     text-align: center;
     margin-bottom: 2rem;
     font-size: 2rem;
     color: #333;
-  }
-  
-  .designs-section h3 {
+}
+
+.products-section h3 { /* Renamed from .designs-section h3 */
     font-size: 1.5rem;
     margin: 1.5rem 0;
     color: #444;
-  }
-  
-  .design-grid {
+}
+
+.product-grid { /* Renamed from .design-grid */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     padding: 0 1rem;
-  }
-  
-  .design-card {
+}
+
+.product-card { /* Renamed from .design-card */
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-  }
-  
-  .design-card:hover {
+}
+
+.product-card:hover { /* Renamed from .design-card:hover */
     transform: translateY(-5px);
-  }
-  
-  .design-image {
+}
+
+.product-image { /* Renamed from .design-image */
     width: 100%;
     height: 200px;
     object-fit: cover;
-  }
-  
-  .design-card h4 {
+}
+
+.product-card h4 { /* Renamed from .design-card h4 */
     font-size: 1.25rem;
     margin: 1rem;
     color: #333;
-  }
-  
-  .design-card p {
+}
+
+.product-card p { /* Renamed from .design-card p */
     margin: 0.5rem 1rem;
     color: #666;
-  }
+}

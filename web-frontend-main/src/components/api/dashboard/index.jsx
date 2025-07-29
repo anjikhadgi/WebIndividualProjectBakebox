@@ -7,44 +7,57 @@ import "../../../styles/Dashboard.css";
 // Fetch data functions
 const fetchTotalCustomers = async () => {
   const token = localStorage.getItem("token");
-  const response = await axios.get("http://localhost:8080/api/customer/view_customers", {
+  const response = await axios.get("http://localhost:5000/api/customer/view_customers", { // Port updated
     headers: { Authorization: `Bearer ${token}` }
   });
-  return response.data.length;
+  // Assuming the customer API returns a direct array or an object with 'customers' array
+  if (Array.isArray(response.data)) {
+    return response.data.length;
+  } else if (response.data.customers && Array.isArray(response.data.customers)) {
+    return response.data.customers.length;
+  }
+  return 0; // Default if not found or invalid
 };
 
-const fetchTotalBookings = async () => {
+const fetchTotalOrders = async () => { // Renamed function
   const token = localStorage.getItem("token");
   try {
-    const response = await axios.get("http://localhost:8080/api/booking/view_bookings", {
+    const response = await axios.get("http://localhost:5000/api/orders/view_orders", { // Port and endpoint updated
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    // Log the response to check its structure (debugging step)
-    console.log('Bookings API Response:', response.data);
-
-    // Ensure the bookings data is accessible under 'response.data.bookings'
-    if (response.data && Array.isArray(response.data.bookings)) {
-      return response.data.bookings.length; // Return the length of the bookings array
+    // Based on previous changes, the OrderController's findAll should return a direct array
+    if (Array.isArray(response.data)) {
+      return response.data.length;
     } else {
+      console.error("Received data for orders is not a direct array:", response.data); // Updated message
       return 0; // Return 0 if the data format is not as expected
     }
   } catch (error) {
-    console.error("Error fetching total bookings:", error);
+    console.error("Error fetching total orders:", error); // Updated message
     return 0; // Return 0 in case of error
   }
 };
 
-
-
-
-const fetchTotalDesigns = async () => {
+const fetchTotalProducts = async () => { // Renamed function
   const token = localStorage.getItem("token");
-  const response = await axios.get("http://localhost:8080/api/design/view_design", {
-    headers: { Authorization: `Bearer ${token}` }
-  });
-  return response.data.length;
+  try {
+    const response = await axios.get("http://localhost:5000/api/products/view_products", { // Port and endpoint updated
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    // Based on previous changes, the ProductController's findAll should return a direct array
+    if (Array.isArray(response.data)) {
+      return response.data.length;
+    } else {
+      console.error("Received data for products is not a direct array:", response.data); // Updated message
+      return 0;
+    }
+  } catch (error) {
+    console.error("Error fetching total products:", error); // Updated message
+    return 0;
+  }
 };
+
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -67,15 +80,15 @@ function Dashboard() {
     enabled: isAuthenticated,
   });
 
-  const { data: totalBookings, isLoading: isLoadingBookings } = useQuery({
-    queryKey: ["totalBookings"],
-    queryFn: fetchTotalBookings,
+  const { data: totalOrders, isLoading: isLoadingOrders } = useQuery({ // Renamed variable and query key
+    queryKey: ["totalOrders"], // Renamed query key
+    queryFn: fetchTotalOrders, // Renamed fetch function
     enabled: isAuthenticated,
   });
 
-  const { data: totalDesigns, isLoading: isLoadingDesigns } = useQuery({
-    queryKey: ["totalDesigns"],
-    queryFn: fetchTotalDesigns,
+  const { data: totalProducts, isLoading: isLoadingProducts } = useQuery({ // Renamed variable and query key
+    queryKey: ["totalProducts"], // Renamed query key
+    queryFn: fetchTotalProducts, // Renamed fetch function
     enabled: isAuthenticated,
   });
 
@@ -90,7 +103,7 @@ function Dashboard() {
     return null; // Prevents unauthorized users from even seeing the UI
   }
 
-  if (isLoadingCustomers || isLoadingBookings || isLoadingDesigns) {
+  if (isLoadingCustomers || isLoadingOrders || isLoadingProducts) { // Renamed loading states
     return <div>Loading...</div>;
   }
 
@@ -100,8 +113,8 @@ function Dashboard() {
         <h1 className="sidebar-title">Admin Panel</h1>
         <ul className="sidebar-menu">
           <li className="menu-item" onClick={() => navigate("/admin/customer")}>Customers</li>
-          <li className="menu-item" onClick={() => navigate("/admin/booking")}>Bookings</li>
-          <li className="menu-item" onClick={() => navigate("/admin/design")}>Designs</li>
+          <li className="menu-item" onClick={() => navigate("/admin/orders")}>Orders</li> {/* Updated navigation path */}
+          <li className="menu-item" onClick={() => navigate("/admin/products")}>Products</li> {/* Updated navigation path */}
         </ul>
         <button className="logout-button" onClick={handleLogout}>Logout</button>
       </div>
@@ -114,12 +127,12 @@ function Dashboard() {
             <p>{totalCustomers}</p>
           </div>
           <div className="stat-card">
-            <h3>Total Bookings</h3>
-            <p>{totalBookings}</p>
+            <h3>Total Orders</h3> {/* Updated display text */}
+            <p>{totalOrders}</p> {/* Updated variable */}
           </div>
           <div className="stat-card">
-            <h3>Total Designs</h3>
-            <p>{totalDesigns}</p>
+            <h3>Total Products</h3> {/* Updated display text */}
+            <p>{totalProducts}</p> {/* Updated variable */}
           </div>
         </div>
       </div>

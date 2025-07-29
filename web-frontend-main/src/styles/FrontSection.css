@@ -14,13 +14,13 @@ body, html {
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-image: url('../assets/images/front-image.webp');
+    background-image: url('../assets/images/front-image.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .front-image h1{
-    color: white;
+    color: rgb(255, 253, 253);
     margin: 0px 0px 30px;
     line-height: 75px;
     font-size: 60px;

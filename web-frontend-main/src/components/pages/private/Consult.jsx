@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 function Consultation(){
     return(
         <div className="consult">
-        <p>Happy Clients, Beautiful Designs</p>
+        <p>Happy Customer, Delicious Products</p>
         <div className="consultation">
             <div 
                 className="consult-img" 
                 style={{ backgroundImage: `url(${consultImage})` }}
                 ></div>
             <div className="consult-text">
-            <p>"Inspiration for Every Corner of Your Home"</p>
+            <p>"Where Every Bite Feels Like Home"</p>
             
-            <Link to="/BookConsultation">
+            <Link to="/OrderConsultation">
             <button>SCHEDULE A CONSULTATION</button>
             </Link>
             </div>

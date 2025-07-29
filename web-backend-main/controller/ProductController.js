@@ -1,25 +1,25 @@
-const Design = require("../model/Design");
+const Product = require("../model/Product"); // Updated import
 
-// Get all designs
+// Get all products
 const findAll = async (req, res) => {
     try {
-        const designs = await Design.findAll({
-            attributes: ['id', 'title', 'description', 'room', 'style', 'image'] // Include `room` and `style`
+        const products = await Product.findAll({ // Updated model usage
+            attributes: ['id', 'title', 'description', 'quantity', 'price', 'image']
         });
-        console.log("Fetched designs:", JSON.stringify(designs, null, 2)); // Debugging line
-        res.status(200).json(designs);
+        console.log("Fetched products:", JSON.stringify(products, null, 2));
+        res.status(200).json(products);
     } catch (err) {
-        res.status(500).json({ message: "Error retrieving designs", error: err.message });
+        res.status(500).json({ message: "Error retrieving products", error: err.message });
     }
 };
 
-// Save a new design
+// Save a new product
 const save = async (req, res) => {
     try {
-        console.log("Request Body:", req.body); // Debugging
-        console.log("Uploaded File:", req.file); // Debugging
+        console.log("Request Body:", req.body);
+        console.log("Uploaded File:", req.file);
 
-        const { title, description, room, style } = req.body; // Include `room` and `style`
+        const { title, description, quantity, price } = req.body;
         if (!req.file) {
             console.error("Image file is missing!");
             return res.status(400).json({ message: "Image file is required." });
@@ -28,65 +28,65 @@ const save = async (req, res) => {
         const image = req.file.filename;
 
         // Save to database
-        const newDesign = await Design.create({ title, description, room, style, image });
+        const newProduct = await Product.create({ title, description, quantity, price, image }); // Updated model usage
 
-        res.status(201).json({ message: "Design created successfully", data: newDesign });
+        res.status(201).json({ message: "Product created successfully", data: newProduct });
     } catch (error) {
-        console.error("Error creating design:", error);
+        console.error("Error creating product:", error);
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
 
-// Get design by ID
+// Get product by ID
 const findById = async (req, res) => {
     try {
-        const design = await Design.findByPk(req.params.id);
-        if (design) {
-            res.status(200).json(design);
+        const product = await Product.findByPk(req.params.id); // Updated model usage
+        if (product) {
+            res.status(200).json(product);
         } else {
-            res.status(404).json({ message: "Design not found" });
+            res.status(404).json({ message: "Product not found" });
         }
     } catch (err) {
-        res.status(500).json({ message: "Error retrieving design", error: err.message });
+        res.status(500).json({ message: "Error retrieving product", error: err.message });
     }
 };
 
-// Delete design by ID
+// Delete product by ID
 const deleteById = async (req, res) => {
     try {
         const { id } = req.params;
-        console.log("Deleting design with ID:", id); // Debugging line
-        const design = await Design.findByPk(id);
-        if (design) {
-            await design.destroy();
-            res.status(200).json({ message: "Design deleted successfully" });
+        console.log("Deleting product with ID:", id);
+        const product = await Product.findByPk(id); // Updated model usage
+        if (product) {
+            await product.destroy();
+            res.status(200).json({ message: "Product deleted successfully" });
         } else {
-            res.status(404).json({ message: "Design not found" });
+            res.status(404).json({ message: "Product not found" });
         }
     } catch (err) {
-        res.status(500).json({ message: "Error deleting design", error: err.message });
+        res.status(500).json({ message: "Error deleting product", error: err.message });
     }
 };
 
-// Update design by ID (handles image update)
+// Update product by ID (handles image update)
 const update = async (req, res) => {
     try {
-        const design = await Design.findByPk(req.params.id);
-        if (!design) {
-            return res.status(404).json({ message: "Design not found" });
+        const product = await Product.findByPk(req.params.id); // Updated model usage
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
         }
 
-        const { title, description, room, style } = req.body; // Include `room` and `style`
-        const updatedData = { title, description, room, style };
+        const { title, description, quantity, price } = req.body;
+        const updatedData = { title, description, quantity, price };
 
         if (req.file) {
             updatedData.image = req.file.filename;
         }
 
-        await design.update(updatedData);
-        res.status(200).json(design);
+        await product.update(updatedData); // Updated model usage
+        res.status(200).json(product);
     } catch (err) {
-        res.status(500).json({ message: "Error updating design", error: err.message });
+        res.status(500).json({ message: "Error updating product", error: err.message });
     }
 };
 

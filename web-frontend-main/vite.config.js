@@ -20,7 +20,7 @@ export default defineConfig({
     open: true, // Automatically open the browser
     proxy: {
       '/api': {
-        target: 'http://localhost:8080', // Proxy API requests to the backend
+        target: 'http://localhost:5000', // Proxy API requests to the backend
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
