@@ -11,8 +11,8 @@ function OrderConsultation() { // Renamed component function
     full_name: "",
     contact_number: "",
     email: "",
-    quantity: 0, // Renamed from 'room', initialized as number
-    product: "", // Renamed from 'design'
+    quantity: 0, 
+    product: "", 
     order_date: "", // Renamed from 'date' to match backend Order model
     description: "",
   });

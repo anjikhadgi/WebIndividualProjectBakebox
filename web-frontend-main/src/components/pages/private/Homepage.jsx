@@ -9,20 +9,20 @@ const API_BASE_URL = "http://localhost:5000/api/products"; // Updated port and b
 
 const Homepage = () => {
   // Fetch products from the backend
-  const { data: products, isLoading, isError } = useQuery({ // Renamed 'designs' to 'products'
+  const { data: products, isLoading, isError } = useQuery({ 
     queryKey: ["GET_PRODUCT_LIST"], // Updated query key
     queryFn: async () => {
-      const response = await axios.get(`${API_BASE_URL}/view_products`); // Updated endpoint
+      const response = await axios.get(`${API_BASE_URL}/view_products`); 
       return response.data;
     },
   });
 
   if (isLoading) {
-    return <p>Loading products...</p>; // Updated message
+    return <p>Loading products...</p>; 
   }
 
   if (isError) {
-    return <p>Error loading products. Please try again later.</p>; // Updated message
+    return <p>Error loading products. Please try again later.</p>; 
   }
 
   return (
@@ -31,23 +31,23 @@ const Homepage = () => {
       <FrontSection />
 
       {/* New Section: Display Products */}
-      <section className="products-section"> {/* Renamed class name */}
+      <section className="products-section"> 
         <h2>Explore Products</h2> {/* Updated heading */}
-        <div className="product-grid"> {/* Renamed class name */}
-          {products?.map((product) => ( // Renamed map variable
-            <div key={product.id} className="product-card"> {/* Renamed class name */}
+        <div className="product-grid"> 
+          {products?.map((product) => ( 
+            <div key={product.id} className="product-card"> 
               <img
-                src={`http://localhost:5000/product_images/${product.image}`} // Updated port and image path
+                src={`http://localhost:5000/product_images/${product.image}`} 
                 alt={product.title}
-                className="product-image" // Updated class name
+                className="product-image" 
               />
               <h3>{product.title}</h3>
               <p>{product.description}</p>
               <p>
-                <strong>Quantity:</strong> {product.quantity} {/* Renamed 'Room' to 'Quantity' */}
+                <strong>Quantity:</strong> {product.quantity}
               </p>
               <p>
-                <strong>Price:</strong> {product.price} {/* Renamed 'Style' to 'Price' */}
+                <strong>Price:</strong> {product.price} 
               </p>
             </div>
           ))}
