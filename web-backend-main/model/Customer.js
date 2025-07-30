@@ -4,16 +4,16 @@ const { sequelize } = require("../config/db");
 const Customer = sequelize.define("Customer", {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
+    autoIncrement: false,
     primaryKey: true,
   },
   full_name: {
     type: DataTypes.STRING,
-    allowNull: false, 
+    allowNull: true, 
   },
   email: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     unique: true,
     validate: {
       isEmail: true, 

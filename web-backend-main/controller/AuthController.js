@@ -26,7 +26,7 @@ const login = async (req, res) => {
 
     // If the user doesn't exist or the password is incorrect, return error
     if (!cred || !(await bcrypt.compare(password, cred.password))) {
-        return res.status(403).json({ message: "Not Invalid " });
+        return res.status(403).json({ message: "Invalid username or password" });
     }
 
     // Create a JWT token
@@ -40,4 +40,4 @@ const login = async (req, res) => {
     res.json({ token });
 };
 
-module.exports = { register };
+module.exports = { register, login };
