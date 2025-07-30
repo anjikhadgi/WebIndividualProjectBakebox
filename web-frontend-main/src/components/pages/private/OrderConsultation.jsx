@@ -137,6 +137,12 @@ function OrderConsultation() { // Renamed component function
                 <option value="Muffins">Muffins</option>
                 <option value="Donuts">Donuts</option>
                 <option value="Cookies">Cookies</option>
+                <option value="Cakes">Cakes</option>
+                <option value="Breads">Breads</option>
+                <option value="Pies">Pies</option>
+                <option value="Brownies">Brownies</option>
+                <option value="Cupcakes">Cupcakes</option>
+                
               </select>
             </div>
 
