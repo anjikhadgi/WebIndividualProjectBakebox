@@ -26,15 +26,15 @@ const fetchTotalOrders = async () => { // Renamed function
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    // Based on previous changes, the OrderController's findAll should return a direct array
-    if (Array.isArray(response.data)) {
-      return response.data.length;
+    // Keep this as it was in the previous fix, assuming orders come in { orders: [...] }
+    if (response.data.orders && Array.isArray(response.data.orders)) {
+      return response.data.orders.length;
     } else {
-      console.error("Received data for orders is not a direct array:", response.data); // Updated message
+      console.error("Received data for orders is not a direct array or expected object format:", response.data);
       return 0; // Return 0 if the data format is not as expected
     }
   } catch (error) {
-    console.error("Error fetching total orders:", error); // Updated message
+    console.error("Error fetching total orders:", error);
     return 0; // Return 0 in case of error
   }
 };
@@ -45,15 +45,19 @@ const fetchTotalProducts = async () => { // Renamed function
     const response = await axios.get("http://localhost:5000/api/products/view_products", { // Port and endpoint updated
       headers: { Authorization: `Bearer ${token}` }
     });
-    // Based on previous changes, the ProductController's findAll should return a direct array
+    // *** MODIFICATION HERE: Check if response.data is directly an array ***
     if (Array.isArray(response.data)) {
-      return response.data.length;
+      return response.data.length; // If it's an array, return its length
+    } else if (response.data.products && Array.isArray(response.data.products)) {
+      // This else-if block handles the case where it's an object with a 'products' key.
+      // Keeping it here for robustness in case the API sometimes returns this format.
+      return response.data.products.length;
     } else {
-      console.error("Received data for products is not a direct array:", response.data); // Updated message
+      console.error("Received data for products is not a direct array or expected object format:", response.data);
       return 0;
     }
   } catch (error) {
-    console.error("Error fetching total products:", error); // Updated message
+    console.error("Error fetching total products:", error);
     return 0;
   }
 };
