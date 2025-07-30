@@ -9,9 +9,9 @@ body, html {
 
 .front-image{
     display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+    justify-content: middle;
+    text-align: middle;
+    align-items: middle;
     height: 100vh;
     width: 100%;
     background-image: url('../assets/images/front-image.png');
