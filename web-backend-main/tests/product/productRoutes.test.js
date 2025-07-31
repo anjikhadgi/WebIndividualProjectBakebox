@@ -94,7 +94,7 @@ describe('Product Routes', () => { // Updated test suite description
 
     test('PUT /api/products/:id should update a product', async () => { // Updated test description and route
         const updatedProduct = {
-            title: 'Updated Modern Living Room',
+            title: 'Updated Pastry Delight',
             // image is handled by multer mock
             description: 'An updated pastry delight product with new taste.',
             quantity: '1',

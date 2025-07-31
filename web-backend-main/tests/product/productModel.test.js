@@ -5,7 +5,7 @@ const dbMock = new SequelizeMock();
 const ProductMock = dbMock.define('Product', { // Updated model name
     id: 1,
     title: 'Pastry Delight',
-    image: 'modern-living-room.jpg',
+    image: '1753770224540.webp',
     description: 'A pastry delight with an innovative flavor.', // Updated description
     quantity: '1',
     price: '10$',
@@ -15,14 +15,14 @@ describe('Product Model', () => { // Updated test suite description
     it('should create a new product', async () => { // Updated test case description
         const product = await ProductMock.create({ // Updated variable and model name
             title: 'Pastry Delight',
-            image: 'modern-living-room.jpg',
+            image: '1753770224540.webp',
             description: 'A pastry delight with an innovative flavor.', // Updated description
             quantity: '1',
             price: '10$'
         });
 
         expect(product.title).toBe('Pastry Delight');
-        expect(product.image).toBe('modern-living-room.jpg');
+        expect(product.image).toBe('1753770224540.webp');
         expect(product.description).toBe('A pastry delight with an innovative flavor.'); // Updated description
         expect(product.quantity).toBe('1');
         expect(product.price).toBe('10$');
@@ -31,7 +31,7 @@ describe('Product Model', () => { // Updated test suite description
     it('should update a product', async () => { // Updated test case description
         const product = await ProductMock.create({ // Updated variable and model name
             title: 'Pastry Delight',
-            image: 'modern-living-room.jpg',
+            image: '1753770224540.webp',
             description: 'A pastry delight with an innovative flavor.',
             quantity: '1',
             price: '10$'
@@ -49,7 +49,7 @@ describe('Product Model', () => { // Updated test suite description
     it('should delete a product', async () => { // Updated test case description
         const product = await ProductMock.create({ // Updated variable and model name
             title: 'Pastry Delight',
-            image: 'modern-living-room.jpg',
+            image: '1753770224540.webp',
             description: 'A pastry delight with an innovative flavor.',
             quantity: '1',
             price: '10$'

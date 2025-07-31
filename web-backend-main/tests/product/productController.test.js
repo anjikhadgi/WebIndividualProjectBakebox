@@ -52,13 +52,13 @@ describe('Product Controller', () => { // Updated test suite description
     test('should create a new product', async () => { // Updated test description
         req.body = {
             title: 'Pastry Delight',
-            image: 'modern-living-room.jpg',
+            image: '1753770224540.webp',
             description: 'A pastry delight product with new taste',
             quantity: '1',
             price: '10$'
         };
         // Mock req.file for the controller's save function
-        req.file = { filename: 'modern-living-room-upload.jpg' }; 
+        req.file = { filename: '1753770224540.webp' }; 
         
         Product.create.mockResolvedValue({ // Updated model usage
             ...req.body, 
@@ -80,7 +80,7 @@ describe('Product Controller', () => { // Updated test suite description
         req.params.id = 1;
         req.body = {
             title: 'Updated Pastry Delight',
-            image: 'modern-living-room.jpg',
+            image: '1753770224540.webp',
             description: 'An updated pastry delight product with new taste.',
             quantity: '1',
             price: '10$'

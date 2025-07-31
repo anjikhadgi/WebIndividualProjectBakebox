@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm app.js"
+    "start": "npm app.js",
+    "test": "jest "
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,6 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "sequelize-mock": "^0.10.2",
-    "supertest": "^7.0.0"
+    "supertest": "^7.1.4"
   }
 }
